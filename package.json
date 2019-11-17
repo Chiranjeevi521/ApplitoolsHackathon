@@ -1,0 +1,16 @@
+{
+  "name": "applitoolshackathon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./node_modules/protractor/bin/protractor protractor.conf.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eyes.selenium": "^3.8.2",
+    "protractor": "^5.4.2",
+    "protractor-image-comparison": "^3.8.0"
+  }
+}

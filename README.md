@@ -1,5 +1,8 @@
 # ApplitoolsHackathon
-This project is to showcase cases that are automated as part of Applitools Hackathon
+This project is to showcase cases that are automated as part of Applitools Hackathon 
+
+USER : chiranjeevi.dasatti@planonsoftware.com
+Team : Applitools Hackathon 2019 (chiranjeevi.dasatti@planonsoftware.com)
 
 Driver settings (For Chrome Driver) : 
 

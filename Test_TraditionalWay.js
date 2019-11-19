@@ -25,32 +25,32 @@ describe("Hackathon - Traditional functional testing approach", function() {
         // browser.get('https://demo.applitools.com/hackathonV2.html');
 
         // Verification of Labels
-        expect(element(by.css('.auth-header')).getText()).toBe('Login Form');
+        expect($('.auth-header').getText()).toBe('Login Form');
         expect(h.userNameBlock().getText()).toBe('Username');
         expect(h.userName().getAttribute('placeholder')).toBe('Enter your username');
         expect(h.passwordBlock().getText()).toBe('Password');
         expect(h.password().getAttribute('placeholder')).toBe('Enter your password');
         expect(h.loginbutton().getText()).toBe('Log In');
-        expect(element(by.css('.form-check-label')).getText()).toBe('Remember Me');
+        expect($('.form-check-label').getText()).toBe('Remember Me');
 
         // Verification of Fieldss
 
         expect(h.userName().isPresent()).toBe(true);
         expect(h.password().isPresent()).toBe(true);
-        expect(element(by.css('input.form-check-input')).isPresent()).toBe(true);
+        expect($('input.form-check-input').isPresent()).toBe(true);
 
         // Verification of icons
 
-        expect(h.userNameBlock().element(by.css('.os-icon-user-male-circle')).isPresent()).toBe(true);
-        expect(h.passwordBlock().element(by.css('.os-icon-fingerprint')).isPresent()).toBe(true);
-        expect(element(by.css('input.form-check-input')).isPresent()).toBe(true);
+        expect(h.userNameBlock().$('.os-icon-user-male-circle').isPresent()).toBe(true);
+        expect(h.passwordBlock().$('.os-icon-fingerprint').isPresent()).toBe(true);
+        expect($('input.form-check-input').isPresent()).toBe(true);
 
         // Verification of images
 
-        expect(element(by.css('.logo-w a:nth-child(1) img')).getAttribute('src')).toBe('https://demo.applitools.com/img/logo-big.png');
-        expect(element(by.css('.buttons-w div a:nth-child(1) img')).getAttribute('src')).toBe('https://demo.applitools.com/img/social-icons/twitter.png');
-        expect(element(by.css('.buttons-w div a:nth-child(2) img')).getAttribute('src')).toBe('https://demo.applitools.com/img/social-icons/facebook.png');
-        expect(element(by.css('.buttons-w div a:nth-child(3) img')).getAttribute('src')).toBe('https://demo.applitools.com/img/social-icons/linkedin.png');
+        expect($('.logo-w a:nth-child(1) img').getAttribute('src')).toBe('https://demo.applitools.com/img/logo-big.png');
+        expect($('.buttons-w div a:nth-child(1) img').getAttribute('src')).toBe('https://demo.applitools.com/img/social-icons/twitter.png');
+        expect($('.buttons-w div a:nth-child(2) img').getAttribute('src')).toBe('https://demo.applitools.com/img/social-icons/facebook.png');
+        expect($('.buttons-w div a:nth-child(3) img').getAttribute('src')).toBe('https://demo.applitools.com/img/social-icons/linkedin.png');
 
     });
 
@@ -92,22 +92,24 @@ describe("Hackathon - Traditional functional testing approach", function() {
 
         element(by.id('amount')).click();
         for(var i = 0; i< expsortingorder.length; i++){
-            expect(element(by.css('tr:nth-child('+(i+1)+') td:nth-child(5) span')).getText()).toBe(expsortingorder[i].amount);
-            expect(element(by.css('tr:nth-child('+(i+1)+') td:nth-child(1) span:nth-child(2)')).getText()).toBe(expsortingorder[i].status);
-            expect(element(by.css('tr:nth-child('+(i+1)+') td:nth-child(2) span:nth-child(1)')).getText()).toBe(expsortingorder[i].date);
-            expect(element(by.css('tr:nth-child('+(i+1)+') td:nth-child(3) span')).getText()).toBe(expsortingorder[i].description);
-            expect(element(by.css('tr:nth-child('+(i+1)+') td:nth-child(4) a')).getText()).toBe(expsortingorder[i].category);
+            expect($('tr:nth-child('+(i+1)+') td:nth-child(5) span').getText()).toBe(expsortingorder[i].amount);
+            expect($('tr:nth-child('+(i+1)+') td:nth-child(1) span:nth-child(2)').getText()).toBe(expsortingorder[i].status);
+            expect($('tr:nth-child('+(i+1)+') td:nth-child(2) span:nth-child(1)').getText()).toBe(expsortingorder[i].date);
+            expect($('tr:nth-child('+(i+1)+') td:nth-child(3) span').getText()).toBe(expsortingorder[i].description);
+            expect($('tr:nth-child('+(i+1)+') td:nth-child(4) a').getText()).toBe(expsortingorder[i].category);
         }
  
      });
 
-     it("Canvas Chart Test", function() {
+     it("Canvas Chart Test", async() => {
 
-        element(by.id('showExpensesChart')).click();
-        expect(element(by.id('canvas')).isPresent()).toBe(true);
-        expect(browser.imageComparison.checkElement(element(by.id('canvas')), 'Upto2018.png')).toEqual(0);
-        element(by.buttonText('Show data for next year')).click();
-        expect(browser.imageComparison.checkElement(element(by.id('canvas')), 'AfterAdding2019.png')).toEqual(0);
+        await element(by.id('showExpensesChart')).click();
+        await expect(element(by.id('canvas')).isPresent()).toBe(true);
+        await browser.imageComparison.saveFullPageScreen('Upto2018', { /* some options*/ });
+        await expect(browser.imageComparison.checkFullPageScreen('Upto2018', { /* some options*/ })).toEqual(0);
+        await element(by.buttonText('Show data for next year')).click();
+        await browser.imageComparison.saveFullPageScreen('Including2019', { /* some options*/ });
+        await expect(browser.imageComparison.checkFullPageScreen('Including2019', { /* some options*/ })).toEqual(0);
          
      });
 
@@ -121,7 +123,7 @@ describe("Hackathon - Traditional functional testing approach", function() {
         h.userName().sendKeys('Test Username');
         h.password().sendKeys('Test Secret');
         h.loginbutton().click();
-        expect(element(by.css('#flashSale img')).getAttribute('src')).toBe('https://demo.applitools.com/img/flashSale.gif');
-        expect(element(by.css('#flashSale2 img')).getAttribute('src')).toBe('https://demo.applitools.com/img/flashSale2.gif');   
+        expect($('#flashSale img').getAttribute('src')).toBe('https://demo.applitools.com/img/flashSale.gif');
+        expect($('#flashSale2 img').getAttribute('src')).toBe('https://demo.applitools.com/img/flashSale2.gif');   
      });
 });

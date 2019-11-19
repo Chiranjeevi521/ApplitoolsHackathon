@@ -25,7 +25,7 @@ describe("Hackathon - visual AI testing with Applitools", function() {
       jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
     });
 
-    it("Login Page UI Elements Test", function() {
+    fit("Login Page UI Elements Test", function() {
 
         // Open a chrome browser.
         eyes.open(browser, "Hackathon App", "Login Page UI Elements Test");
@@ -39,7 +39,7 @@ describe("Hackathon - visual AI testing with Applitools", function() {
         // browser.get("https://demo.applitools.com/hackathonV2.html");
         
         // // Verification of Labels
-        // eyes.check('Login Form',element(by.css('.auth-header'))); // Unable to use eyes.check method as I am getting compile error issue
+        //eyes.check('Login Form',$('.auth-header'))); // Unable to use eyes.check method as I am getting compile error issue
 
         // // Glimpse of error log :
         // //   Failed: target.getIgnoreObjects is not a function
@@ -51,29 +51,29 @@ describe("Hackathon - visual AI testing with Applitools", function() {
         // eyes.check('Password', h.passwordBlock());
         // eyes.checkElement(h.password()); // This is to verify place holder text of password field
         // eyes.check('Log In',h.loginbutton());
-        // eyes.check('Remember Me',element(by.css('.form-check-label'))); 
-        // eyes.checkElement(h.userNameBlock().element(by.css('.os-icon-user-male-circle'))); // To verify user name icon
-        // eyes.checkElement(h.passwordBlock().element(by.css('.os-icon-fingerprint'))); // To verify password icon 
-        // eyes.checkElement(element(by.css('.logo-w a:nth-child(1) img'))); // To verify Top image
-        // eyes.checkElement(element(by.css('.buttons-w div a:nth-child(1) img'))); // To verify social network image
-        // eyes.checkElement(element(by.css('.buttons-w div a:nth-child(2) img'))); // To verify social network image
-        // eyes.checkElement(element(by.css('.buttons-w div a:nth-child(3) img'))); // To verify social network image
+        // eyes.check('Remember Me',$('.form-check-label'))); 
+        // eyes.checkElement(h.userNameBlock().$('.os-icon-user-male-circle'))); // To verify user name icon
+        // eyes.checkElement(h.passwordBlock().$('.os-icon-fingerprint'))); // To verify password icon 
+        // eyes.checkElement($('.logo-w a:nth-child(1) img'))); // To verify Top image
+        // eyes.checkElement($('.buttons-w div a:nth-child(1) img'))); // To verify social network image
+        // eyes.checkElement($('.buttons-w div a:nth-child(2) img'))); // To verify social network image
+        // eyes.checkElement($('.buttons-w div a:nth-child(3) img'))); // To verify social network image
 
 
         // Verification of Labels
-        eyes.checkElement(element(by.css('.auth-header')));
+        eyes.checkElement($('.auth-header'));
         eyes.checkElement(h.userNameBlock());
         eyes.checkElement(h.userName()); // This is to verify place holder text of user name field
         eyes.checkElement( h.passwordBlock());
         eyes.checkElement(h.password()); // This is to verify place holder text of password field
         eyes.checkElement(h.loginbutton());
-        eyes.checkElement(element(by.css('.form-check-label'))); 
-        eyes.checkElement(h.userNameBlock().element(by.css('.os-icon-user-male-circle'))); // To verify user name icon
-        eyes.checkElement(h.passwordBlock().element(by.css('.os-icon-fingerprint'))); // To verify password icon 
-        eyes.checkElement(element(by.css('.logo-w a:nth-child(1) img'))); // To verify Top image
-        eyes.checkElement(element(by.css('.buttons-w div a:nth-child(1) img'))); // To verify social network image
-        eyes.checkElement(element(by.css('.buttons-w div a:nth-child(2) img'))); // To verify social network image
-        eyes.checkElement(element(by.css('.buttons-w div a:nth-child(3) img'))); // To verify social network image
+        eyes.checkElement($('.form-check-label')); 
+        eyes.checkElement(h.userNameBlock().$('.os-icon-user-male-circle')); // To verify user name icon
+        eyes.checkElement(h.passwordBlock().$('.os-icon-fingerprint')); // To verify password icon 
+        eyes.checkElement($('.logo-w a:nth-child(1) img')); // To verify Top image
+        eyes.checkElement($('.buttons-w div a:nth-child(1) img')); // To verify social network image
+        eyes.checkElement($('.buttons-w div a:nth-child(2) img')); // To verify social network image
+        eyes.checkElement($('.buttons-w div a:nth-child(3) img')); // To verify social network image
 
     });
 
@@ -100,7 +100,7 @@ describe("Hackathon - visual AI testing with Applitools", function() {
         h.userName().sendKeys('Test Username');
         h.password().sendKeys('Test Secret');
         h.loginbutton().click();
-        eyes.checkElement(element(by.css('.top-menu-controls')));
+        eyes.checkElement($('.top-menu-controls'));
  
      }); 
 
@@ -130,8 +130,8 @@ describe("Hackathon - visual AI testing with Applitools", function() {
         h.userName().sendKeys('Test Username');
         h.password().sendKeys('Test Secret');
         h.loginbutton().click();
-        eyes.checkRegionByElement(by.css('#flashSale img'));
-        eyes.checkRegionByElement(by.css('#flashSale2 img'));
+        eyes.checkRegionBy$('#flashSale img');
+        eyes.checkRegionBy$('#flashSale2 img');
         
         eyes.close();
      });

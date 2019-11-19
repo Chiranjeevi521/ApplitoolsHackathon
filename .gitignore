@@ -3,3 +3,5 @@
 .DS_Store
 specs/test*
 package-lock.json
+debug.log
+/.tmp

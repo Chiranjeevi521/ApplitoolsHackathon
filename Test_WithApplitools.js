@@ -25,74 +25,40 @@ describe("Hackathon - visual AI testing with Applitools", function() {
       jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
     });
 
-    fit("Login Page UI Elements Test", function() {
+    it("1. Login Page UI Elements Test", async() => {
 
         // Open a chrome browser.
-        eyes.open(browser, "Hackathon App", "Login Page UI Elements Test");
+        await eyes.open(browser, "Hackathon App", "Login Page UI Elements Test");
 
         // Navigate the browser to the "hello world!" web-site.
         browser.ignoreSynchronization = true
+
         //Version1
-        browser.get("https://demo.applitools.com/hackathon.html");
+        await browser.get("https://demo.applitools.com/hackathon.html");
 
         // //Version2
         // browser.get("https://demo.applitools.com/hackathonV2.html");
-        
-        // // Verification of Labels
-        //eyes.check('Login Form',$('.auth-header'))); // Unable to use eyes.check method as I am getting compile error issue
 
-        // // Glimpse of error log :
-        // //   Failed: target.getIgnoreObjects is not a function
-        // //   Stack:
-        // //     TypeError: target.getIgnoreObjects is not a function
-        // //         at Eyes.check (D:\Office\Automation\ApplitoolsHackathon\node_modules\eyes.selenium\src\Eyes.js:228:20)
-        // eyes.check('Username',h.userNameBlock());
-        // eyes.checkElement(h.userName()); // This is to verify place holder text of user name field
-        // eyes.check('Password', h.passwordBlock());
-        // eyes.checkElement(h.password()); // This is to verify place holder text of password field
-        // eyes.check('Log In',h.loginbutton());
-        // eyes.check('Remember Me',$('.form-check-label'))); 
-        // eyes.checkElement(h.userNameBlock().$('.os-icon-user-male-circle'))); // To verify user name icon
-        // eyes.checkElement(h.passwordBlock().$('.os-icon-fingerprint'))); // To verify password icon 
-        // eyes.checkElement($('.logo-w a:nth-child(1) img'))); // To verify Top image
-        // eyes.checkElement($('.buttons-w div a:nth-child(1) img'))); // To verify social network image
-        // eyes.checkElement($('.buttons-w div a:nth-child(2) img'))); // To verify social network image
-        // eyes.checkElement($('.buttons-w div a:nth-child(3) img'))); // To verify social network image
-
-
-        // Verification of Labels
-        eyes.checkElement($('.auth-header'));
-        eyes.checkElement(h.userNameBlock());
-        eyes.checkElement(h.userName()); // This is to verify place holder text of user name field
-        eyes.checkElement( h.passwordBlock());
-        eyes.checkElement(h.password()); // This is to verify place holder text of password field
-        eyes.checkElement(h.loginbutton());
-        eyes.checkElement($('.form-check-label')); 
-        eyes.checkElement(h.userNameBlock().$('.os-icon-user-male-circle')); // To verify user name icon
-        eyes.checkElement(h.passwordBlock().$('.os-icon-fingerprint')); // To verify password icon 
-        eyes.checkElement($('.logo-w a:nth-child(1) img')); // To verify Top image
-        eyes.checkElement($('.buttons-w div a:nth-child(1) img')); // To verify social network image
-        eyes.checkElement($('.buttons-w div a:nth-child(2) img')); // To verify social network image
-        eyes.checkElement($('.buttons-w div a:nth-child(3) img')); // To verify social network image
+        await eyes.checkWindow('Login Screen');
 
     });
 
-    it("Data Driven Test", function() {
+    it("2. Data Driven Test", async() => {
 
         //Error to be shown upon clicking on login button without entering both user name and password
         h.loginbutton().click();
-        eyes.checkElement(h.loginWarning());
+        await eyes.checkWindow('Error when user name and password not provided');
 
         //Error to be shown upon clicking on login button without password
         h.userName().sendKeys('Test Username');
         h.loginbutton().click();
-        eyes.checkElement(h.loginWarning());
+        await eyes.checkWindow('Error when password not provided');
 
         //Error to be shown upon clicking on login button without entering user name
         h.userName().clear();
         h.password().sendKeys('Test Secret');
         h.loginbutton().click();
-        eyes.checkElement(h.loginWarning());
+        await eyes.checkWindow('Error when Username not provided');
 
         //Login should be successful upon entering user name and password
         h.userName().clear();
@@ -100,38 +66,38 @@ describe("Hackathon - visual AI testing with Applitools", function() {
         h.userName().sendKeys('Test Username');
         h.password().sendKeys('Test Secret');
         h.loginbutton().click();
-        eyes.checkElement($('.top-menu-controls'));
+        await eyes.checkWindow('Login Successful Page');
  
      }); 
 
-     it("Table Sort Test : From amount sort - Ascending", function() {
+     it("3. Table Sort Test : From amount sort - Ascending", async() => {
 
-        element(by.id('amount')).click();
-        eyes.checkRegionByElement(element(by.id('transactionsTable')));
+        await eyes.checkWindow('Table Without Sort By Amount');
+        h.amountColumnHeader().click();
+        await eyes.checkWindow('Table Sorted By Amount');
  
      });
 
-     it("Canvas Chart Test", function() {
+     it("4. Canvas Chart Test", async() => {
 
-        element(by.id('showExpensesChart')).click();
-        eyes.checkRegionByElement(element(by.id('canvas')));
-        element(by.buttonText('Show data for next year')).click();
-        eyes.checkRegionByElement(element(by.id('canvas')));
+        h.showExpensesChart().click();
+        await eyes.checkWindow('ChartUpto2018');
+        h.showExpensesChartNextYear().click();
+        await eyes.checkWindow('ChartUpto2019');
 
      });
 
-     it("Dynamic Content Test", function() {
+     it("5. Dynamic Content Test", async() => {
 
         //Version1
-        browser.get('https://demo.applitools.com/hackathon.html?showAd=true');
+        await browser.get('https://demo.applitools.com/hackathon.html?showAd=true');
         // //Version2
         // browser.get('https://demo.applitools.com/hackathonV2.html?showAd=true');
 
         h.userName().sendKeys('Test Username');
         h.password().sendKeys('Test Secret');
         h.loginbutton().click();
-        eyes.checkRegionBy$('#flashSale img');
-        eyes.checkRegionBy$('#flashSale2 img');
+        await eyes.checkWindow('FlashScreenAds');
         
         eyes.close();
      });

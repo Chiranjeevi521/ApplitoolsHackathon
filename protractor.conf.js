@@ -5,8 +5,7 @@ const { join } = require('path');
 
 exports.config = {
     framework: "jasmine",
-    specs: ["Test_TraditionalWay.js"],
-    //specs: ["Test_WithApplitools.js"],
+    specs: ["Test_TraditionalWay.js","Test_WithApplitools.js"],
     directConnect: true,
     chromeDriver: 'C:\\BrowserServers\\chromedriver.exe',
     plugins: [

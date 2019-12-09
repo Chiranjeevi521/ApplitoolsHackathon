@@ -19,5 +19,16 @@ Steps to execute :
 
 To run tests : 
 
+With Version 1 :
+
 1) perform "npm run test" 
+
+
+With Version 2 : 
+
+1) For traditional way : Navigate to Test_TraditionalWay.js and disable lines #18, #114 and enable lines #21 and #117
+2) For Applitools way :  Navigate to Test_WithApplitools.js and disable lines #37, #93 and enable lines #40 and #96
+3) perform "npm run test"
+
+
 

@@ -30,7 +30,7 @@ describe("Hackathon - visual AI testing with Applitools", function() {
         // Open a chrome browser.
         await eyes.open(browser, "Hackathon App", "Login Page UI Elements Test");
 
-        // Navigate the browser to the "hello world!" web-site.
+        // Ignore syncroinization
         browser.ignoreSynchronization = true
 
         //Version1
@@ -91,7 +91,8 @@ describe("Hackathon - visual AI testing with Applitools", function() {
 
         //Version1
         await browser.get('https://demo.applitools.com/hackathon.html?showAd=true');
-        // //Version2
+
+        // Version2
         // browser.get('https://demo.applitools.com/hackathonV2.html?showAd=true');
 
         h.userName().sendKeys('Test Username');

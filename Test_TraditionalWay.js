@@ -12,16 +12,12 @@ describe("Hackathon - Traditional functional testing approach", function() {
  
     });
 
-    // beforeEach( () => {
-
-    // });
-
     it("1. Login Page UI Elements Test", async() => {
 
-        //version1
+        //URL for version1
         await browser.get('https://demo.applitools.com/hackathon.html');
 
-        // //version2
+        // URL for version2
         // browser.get('https://demo.applitools.com/hackathonV2.html');
 
         // Verification of Labels
@@ -114,9 +110,10 @@ describe("Hackathon - Traditional functional testing approach", function() {
 
      it("5. Dynamic Content Test", async() => {
 
-        //Version1
+        //URL for Version1
         await browser.get('https://demo.applitools.com/hackathon.html?showAd=true');
-        // //Version2
+        
+        // URL for Version2
         // browser.get('https://demo.applitools.com/hackathonV2.html?showAd=true');
 
         h.userName().sendKeys('Test Username');

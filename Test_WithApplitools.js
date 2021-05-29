@@ -2,7 +2,7 @@
 var helper = require('./helper');
 var Eyes = require("eyes.selenium").Eyes;
 var eyes = new Eyes();
-eyes.setApiKey("D98cgCtCwmoKtn9weQBuxPsxar107LRXXt3YZHAOaypUN8110");
+eyes.setApiKey("your applitools api key");
 var h = new helper.Helper();
 
 describe("Hackathon - visual AI testing with Applitools", function() {

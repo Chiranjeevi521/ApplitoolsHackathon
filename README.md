@@ -19,6 +19,8 @@ Steps to execute :
 
 To run tests : 
 
+Precondition : Update your applitools api key at Test_WithApplitools.js file
+
 With Version 1 :
 
 1) perform "npm run test" 

@@ -1,8 +1,7 @@
-# ApplitoolsHackathon
-This project is to showcase cases that are automated as part of Applitools Hackathon 
+# applitools-protractor-demo
+This project is to showcase protractor and applitool integration. 
 
-USER : chiranjeevi.dasatti@planonsoftware.com
-Team : Applitools Hackathon 2019 (chiranjeevi.dasatti@planonsoftware.com)
+For better understanding, created tests in both traditional ( without applitools ) and moderen ( with applitools) way.
 
 Driver settings (For Chrome Driver) : 
 
@@ -16,6 +15,7 @@ Steps to execute :
 1) Colne this repo
 2) cmd into project folder
 3) perform "npm install"
+
 
 To run tests : 
 
